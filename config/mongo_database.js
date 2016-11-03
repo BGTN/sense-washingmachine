@@ -13,7 +13,8 @@ mongoose.connect(mongodbURL, function (err, res) {
 var accelerometerSchema = new mongoose.Schema({
 	x: { type: Number },
 	y: { type: Number },
-	z: { type: Number }	
+	z: { type: Number },
+	date: { type: Date, default: Date.now }	
 });
 
 // define models
@@ -21,12 +22,3 @@ var AccMeasurementModel = mongoose.model('AccMeasurementModel', accelerometerSch
 
 // export models
 exports.accMeasurementModel = AccMeasurementModel;
-
-/*
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-
-
-
-}); */
