@@ -55,35 +55,39 @@ SensorTag.discover(function(sensorTag) {
         if (USE_READ) {
           console.log('readAccelerometer');
 
-          sensorTag.readAccelerometer(function(error, x, y, z) {
 
-		setInterval(function(){
-			// save new accMeasurementEntry			
-			var accMeasurementEntry = new db.accMeasurementModel({
-				x: x,
-				y: y,
-				z: z
-			});
-			
-			accMeasurementEntry.save(function (err, accMeasurement) {
-				if (err) return console.error(err);
-				console.log("accMeasurement created");
+
+	setInterval(function(){
+ 	 sensorTag.readAccelerometer(function(error, x, y, z) {
+		// save new accMeasurementEntry			
+		var accMeasurementEntry = new db.accMeasurementModel({
+			x: x,
+			y: y,
+			z: z
+		});
 		
-				AccMeasurement.find(function (err, accMeasurements) {
-					if (err) return console.error(err);
-					console.log(accMeasurements);
-				})				
-			});
-		}, 3000)
-
-
+		accMeasurementEntry.save(function (err, accMeasurement) {
+			if (err) return console.error(err);
+			console.log("accMeasurement created");
+	
+			db.accMeasurementModel.find(function (err, accMeasurements) {
+				if (err) return console.error(err);
+				console.log(accMeasurements);
+			})				
+		});
 
             console.log('\tx = %d G', x.toFixed(1));
             console.log('\ty = %d G', y.toFixed(1));
             console.log('\tz = %d G', z.toFixed(1));
 
-            callback();
+           // callback();
           });
+
+	}, 3000)
+	
+
+
+
         } else {
           sensorTag.on('accelerometerChange', function(x, y, z) {
             console.log('\tx = %d G', x.toFixed(1));
