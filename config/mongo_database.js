@@ -22,27 +22,11 @@ var AccMeasurementModel = mongoose.model('AccMeasurementModel', accelerometerSch
 // export models
 exports.accMeasurementModel = AccMeasurementModel;
 
-exports
+/*
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
 
-	
-	var accMeasurementEntry = new AccMeasurement({
-		x: 1,
-		y: 2,
-		z: 3
-	});
-	
-	accMeasurementEntry.save(function (err, accMeasurement) {
-		if (err) return console.error(err);
-		console.log("accMeasurement created");
 
-		AccMeasurement.find(function (err, accMeasurements) {
-			if (err) return console.error(err);
-			console.log(accMeasurements);
-		})
 
-	});
-
-});
+}); */
