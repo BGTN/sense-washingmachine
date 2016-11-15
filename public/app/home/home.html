@@ -1,4 +1,18 @@
-/.<div class="jumbotron text-center ng-scope">
-<h1>Home Page</h1>
-<p>{{message}}</p>
+<div class="container">
+<h1>Sense Washing Machines</h1>
+
+<table class="table table-condensed">
+	<tr>
+		<th>Date</>
+		<th>x</>
+		<th>y</>
+		<th>z</>
+	</tr>
+	<tr ng-repeat="accM in accMeasurements | orderBy:'-date' | limitTo: 50">
+		<td>{{accM.date}}</td>
+		<td>{{accM.x}}</td>
+		<td>{{accM.y}}</td>
+		<td>{{accM.z}}</td>
+	</tr>		
+</table>
 </div>

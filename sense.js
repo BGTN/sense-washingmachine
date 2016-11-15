@@ -54,7 +54,11 @@ SensorTag.discover(function(sensorTag) {
 	function(callback) {
 		if (USE_READ) {
 			console.log('readAccelerometer');
-
+			var x1 = 0.0;
+			var y1 = 0.0;
+			var z1 = 0.0;
+			var countOn = 0;
+			var countOff = 0;
 			setInterval(function() {
 				sensorTag.readAccelerometer(function(error, x, y, z) {
 					// save new accMeasurementEntry
@@ -64,6 +68,24 @@ SensorTag.discover(function(sensorTag) {
 						z : z
 					});
 
+					var change = Math.pow((x - x1),2) + Math.pow((y-y1),2) + Math.pow((z-z1),2);
+
+					if(change > .03) {
+						countOn++;
+						countOff = 0;
+					} else {
+						countOn = 0;
+						countOff++;
+					}
+
+					console.log(change);
+					console.log(countOn);
+					console.log(countOff);
+					
+					x1 = x;
+					y1 = y;
+					z1 = z;
+
 					accMeasurementEntry.save(function(err, accMeasurement) {
 						if (err)
 							return console.error(err);
@@ -72,7 +94,7 @@ SensorTag.discover(function(sensorTag) {
 						db.accMeasurementModel.find(function(err, accMeasurements) {
 							if (err)
 								return console.error(err);
-							console.log(accMeasurements);
+						//	console.log(accMeasurements);
 						});
 					});
 

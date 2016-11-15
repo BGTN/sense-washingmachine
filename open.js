@@ -1,6 +1,4 @@
 var twilio = require('twilio');
-var exec = require('child_process').exec,
-	child;
 
 function convertHour(hour){
 	var temp = hour - 5;
@@ -20,9 +18,8 @@ var hour = convertHour(h);
 var m = d.getMinutes();
 
 if(m < 10){
-        var m = '0' + m;
+	var m = '0' + m;
 }
-
 
 var client = new twilio.RestClient('ACccfd0901ab50c6a32d68ba536e401440', '936374d806adbef0cfb029f1a863a03b');
  
@@ -31,7 +28,7 @@ var client = new twilio.RestClient('ACccfd0901ab50c6a32d68ba536e401440', '936374
 client.sms.messages.create({
     to:'+12035779892',
     from:'12038197406',
-    body:'Your laundry is done. ' + ' Time: ' +hour + ':' + m
+    body:'A washing machine is available. ' + ' Time: ' +hour + ':' + m
 }, function(error, message) {
     // The HTTP request to Twilio will run asynchronously. This callback
     // function will be called when a response is received from Twilio
@@ -49,14 +46,5 @@ client.sms.messages.create({
     } else {
 	console.log(error)
         console.log('Oops! There was an error.');
-    }
-});
-
-child = exec('node ./open.js',
-  function (error, stdout, stderr) {
-    console.log('stdout: ' + stdout);
-    console.log('stderr: ' + stderr);
-    if (error !== null) {
-      console.log('exec error: ' + error);
     }
 });
