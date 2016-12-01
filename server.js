@@ -7,7 +7,8 @@ var config = require('./config/config.js');
 
 //Routes
 var ro = {
-	accMeasurements:	require('./route/accelerometer_measurement.js')
+	accMeasurements:	require('./route/accelerometer_measurement.js'),
+	washingMachines:	require('./route/washing_machine.js')
 };
 
 app.use(express.static(__dirname + '/public')); 	// set the static files location /public/img will be /img for users
@@ -19,7 +20,7 @@ app.listen(4567);
 
 //accMeasurement routes
 app.get('/accmeasurement/listAll', ro.accMeasurements.listAll);
-
+app.get('/washingmachine/listAll', ro.washingMachines.listAll);
 
 console.log('Simple static server listening on port 4567');
 

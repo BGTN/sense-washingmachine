@@ -2,7 +2,15 @@ var mongoose = require('mongoose');
 var mongodbURL = 'mongodb://localhost/washdb';
 
 //add MAC addresses of sensor tags here
-var macAddressesOfSensorTags = ["Mac Address 1", "Mac Address 2"];
+var macAddressesOfSensorTags = [
+	{
+		mac: "Mac Address 1",
+		title: "2"
+	},
+	{
+		mac: "Mac Address 2",
+		title: "1"
+	}];
 
 mongoose.connect(mongodbURL, function (err, res) {
 	if (err) {
@@ -22,6 +30,7 @@ var accelerometerSchema = new mongoose.Schema({
 
 var washingMachineSchema = new mongoose.Schema({
 	mac: { type: String },
+	title: { type: String },
 	running: { type: Boolean, default: false },
 	updated: { type: Date, default: Date.now }
 });
@@ -45,10 +54,10 @@ db.once('open', function() {
 		// if washingMachines are still not created, add them
 		if (washingMachines.length < 2) {
 			WashingMachineModel.remove({}, function(){
-				//todo delete all included washing machines first
-				macAddressesOfSensorTags.forEach(function(mac_address) {
+				macAddressesOfSensorTags.forEach(function(washingMachine) {
 					var washingMachineEntry = new WashingMachineModel({
-						mac: mac_address
+						mac: washingMachine.mac,
+						title: washingMachine.title
 					});
 					washingMachineEntry.save(function (err, washingMachine) {
 						if (err) return console.error(err);

@@ -10,7 +10,7 @@ var db = require('./config/mongo_database.js');
 
 console.log("Turn on the sensortag.");
 
-SensorTag.discoverById("247189c13287", function(sensorTag) {
+function onDiscover(sensorTag) {
 	console.log('discovered: ' + sensorTag);
 
 	sensorTag.on('disconnect', function() {
@@ -133,5 +133,8 @@ SensorTag.discoverById("247189c13287", function(sensorTag) {
 	function(callback) {
 		console.log('disconnect');
 		sensorTag.disconnect(callback);
-	}]);
-});
+	}
+		]);
+}
+
+SensorTag.discoverAll(onDiscover);

@@ -2,7 +2,7 @@ var options = {};
 options.api = {};
 options.api.base_url = "http://10.66.55.27:4567"; //change if other url
 
-var hostApp = angular.module('hostApp', ['ngRoute']);
+var hostApp = angular.module('hostApp', ['ngRoute', 'timer']);
 
 hostApp.config(function($routeProvider) {
  $routeProvider
@@ -21,17 +21,36 @@ hostApp.config(function($routeProvider) {
 });
 
 //controllers
-hostApp.controller('mainController', function($scope, AccMeasurementService) {
+hostApp.controller('mainController', function($scope, AccMeasurementService, WashingMachineService) {
+	$scope.washingMachines = [];
 
- 	$scope.message = 'Welcome to our home web server!';
 	setInterval(function() {
 		AccMeasurementService.listAll().success(function(accMeasurements){
 			$scope.accMeasurements = accMeasurements;
 			console.log("accmeasurements:");
-			console.log(accMeasurements);
+			//console.log(accMeasurements);
 		}).error(function(err){
 			console.log(err);
 		});
+
+		WashingMachineService.listAll().success(function(washingMachines){
+			$scope.washingMachines=[];
+			washingMachines.forEach(function(am){
+				var runningTimespanInMilliseconds = 500*60*1000;
+				var now = new Date();
+				var start = new Date(am.updated);
+				var starttime = now - start;
+				starttime = runningTimespanInMilliseconds - (starttime/1000);
+				am.starttime = starttime;
+				$scope.washingMachines.push(am);
+			});
+			//$scope.washingMachines = washingMachines;
+			console.log("washingmachines:");
+			console.log(washingMachines);
+		}).error(function(err){
+			console.log(err);
+		});
+		
 	}, 3000);
 });
 
@@ -46,6 +65,17 @@ hostApp.factory('AccMeasurementService', function($http) {
 		
 		listAll: function() {
 			return $http.get(options.api.base_url + '/accmeasurement/listAll');
+		}
+	};
+
+});
+
+hostApp.factory('WashingMachineService', function($http) {
+
+	return {
+		
+		listAll: function() {
+			return $http.get(options.api.base_url + '/washingmachine/listAll');
 		}
 	};
 
