@@ -1,15 +1,11 @@
 var mongoose = require('mongoose');
 var mongodbURL = 'mongodb://localhost/washdb';
 
-//add MAC addresses of sensor tags here
+//add MAC addresses of sensor tags here.. as bluetooth seems to support only one device at one time we had to change the code to only one machine (little bit dirty)
 var macAddressesOfSensorTags = [
 	{
 		mac: "Mac Address 1",
 		title: "2"
-	},
-	{
-		mac: "Mac Address 2",
-		title: "1"
 	}];
 
 mongoose.connect(mongodbURL, function (err, res) {
@@ -51,8 +47,8 @@ db.once('open', function() {
 	WashingMachineModel.find(function (err, washingMachines) {
 		if (err) return console.error(err);
 
-		// if washingMachines are still not created, add them
-		if (washingMachines.length < 2) {
+		// if washingMachines are still not created, add them (currently only one supported, code dirty)
+		if (washingMachines.length < 1) {
 			WashingMachineModel.remove({}, function(){
 				macAddressesOfSensorTags.forEach(function(washingMachine) {
 					var washingMachineEntry = new WashingMachineModel({
