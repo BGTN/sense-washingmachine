@@ -5,7 +5,7 @@ var mongodbURL = 'mongodb://localhost/washdb';
 var macAddressesOfSensorTags = [
 	{
 		mac: "Mac Address 1",
-		title: "2"
+		title: "1"
 	}];
 
 mongoose.connect(mongodbURL, function (err, res) {
@@ -27,6 +27,7 @@ var accelerometerSchema = new mongoose.Schema({
 var washingMachineSchema = new mongoose.Schema({
 	mac: { type: String },
 	title: { type: String },
+	starttime: { type: Date},
 	running: { type: Boolean, default: false },
 	updated: { type: Date, default: Date.now }
 });

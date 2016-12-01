@@ -81,7 +81,7 @@ SensorTag.discoverById("247189c13287", function(sensorTag) {
 						countOff++;
 					}
 
-					if(countOff == 5) {
+					if(countOff == 10) {
 						
 						// change status of washingMachine to off (running: false); currently only one machine supported
 						db.washingMachineModel.find(function(err, washingMachines) {
@@ -90,7 +90,7 @@ SensorTag.discoverById("247189c13287", function(sensorTag) {
 							} else {
 								washingMachines.forEach(function(wm){
 									// if the status of the washing machine was "running" (running == true), the status should be updated to false and the sms sent 
-									if (wm.running == on) {
+									if (wm.running == true) {
 										db.washingMachineModel.update({
 											_id: wm._id
 											},
@@ -99,7 +99,7 @@ SensorTag.discoverById("247189c13287", function(sensorTag) {
 												if(err) {
 													console.log(err);
 												} else {
-												console.log("wm turned off");
+												console.log("status of washingmachine turned off");
 												
 												// send sms that washing machine is done
 												/*
@@ -117,15 +117,44 @@ SensorTag.discoverById("247189c13287", function(sensorTag) {
 							}
 						});
 
-						// print washingMachine for test reasons
-						db.washingMachineModel.find(function(err, washingMachines) {
-							if(err) {
-								console.log(err)
-							} else {
-								console.log(washingMachines);
-							}
-						});
+
 					}
+					
+					//if the washingMachine is on, change status of washingMachine is running
+					if (countOn > 3) {
+						// change status of washingMachine to on (running: true); currently only one machine supported
+						db.washingMachineModel.find(function(err, washingMachines) {
+							if (err) {
+								console.log(err);
+							} else {
+								washingMachines.forEach(function(wm){
+									// if the status of the washing machine was "running" (running == true), the status should be updated to true 
+									if (wm.running == false) {
+										db.washingMachineModel.update({
+											_id: wm._id
+											},
+											{running: true, starttime: new Date()},
+											function(err, wmu){
+												if(err) {
+													console.log(err);
+												} else {
+												console.log("status of washing machine turned on");
+												}
+											})
+									}
+								});
+							}
+						});						
+					}
+
+					// print washingMachine for test reasons
+					db.washingMachineModel.find(function(err, washingMachines) {
+						if(err) {
+							console.log(err)
+						} else {
+							console.log(washingMachines);
+						}
+					});
 
 					console.log(change);
 					console.log(countOn);

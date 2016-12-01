@@ -13,6 +13,12 @@ hostApp.config(function($routeProvider) {
  controller : 'mainController'
  })
 
+ // route for the analysis page
+ .when('/analysis', {
+ templateUrl : 'app/analysis/analysis.html',
+ controller : 'analysisController'
+ })
+
  // route for the about page
  .when('/about', {
  templateUrl : 'app/about/about.html',
@@ -22,6 +28,45 @@ hostApp.config(function($routeProvider) {
 
 //controllers
 hostApp.controller('mainController', function($scope, AccMeasurementService, WashingMachineService) {
+	$scope.washingMachines = [];
+
+	setInterval(function() {
+
+		WashingMachineService.listAll().success(function(washingMachines){
+			$scope.washingMachines=[];
+			// todo change starttime to washingmachine.starttime
+			washingMachines.forEach(function(wm){
+				var starttime;
+				var now = new Date();
+				var runningTimespanInMilliseconds = 57*60*1000;
+
+				if (wm.starttime !== (null || "" || undefined)) {
+					var start = new Date(wm.starttime);
+					starttime = now - start;
+					starttime = runningTimespanInMilliseconds - (starttime);
+					starttime = starttime / (1000);
+				} else {
+					var start = new Date(wm.updated);
+					starttime = now - start;
+					starttime = runningTimespanInMilliseconds - (starttime);
+					starttime = starttime / (1000);
+				}
+
+				wm.starttime = starttime;
+				$scope.washingMachines.push(wm);
+			});
+			//$scope.washingMachines = washingMachines;
+			console.log("washingmachines:");
+			console.log(washingMachines);
+		}).error(function(err){
+			console.log(err);
+		});
+		
+	}, 3000);
+});
+
+//controllers
+hostApp.controller('analysisController', function($scope, AccMeasurementService, WashingMachineService) {
 	$scope.washingMachines = [];
 
 	setInterval(function() {
@@ -35,14 +80,26 @@ hostApp.controller('mainController', function($scope, AccMeasurementService, Was
 
 		WashingMachineService.listAll().success(function(washingMachines){
 			$scope.washingMachines=[];
-			washingMachines.forEach(function(am){
-				var runningTimespanInMilliseconds = 500*60*1000;
+			// todo change starttime to washingmachine.starttime
+			washingMachines.forEach(function(wm){
+				var starttime;
 				var now = new Date();
-				var start = new Date(am.updated);
-				var starttime = now - start;
-				starttime = runningTimespanInMilliseconds - (starttime/1000);
-				am.starttime = starttime;
-				$scope.washingMachines.push(am);
+				var runningTimespanInMilliseconds = 57*60*1000;
+
+				if (wm.starttime !== (null || "" || undefined)) {
+					var start = new Date(wm.starttime);
+					starttime = now - start;
+					starttime = runningTimespanInMilliseconds - (starttime);
+					starttime = starttime / (1000);
+				} else {
+					var start = new Date(wm.updated);
+					starttime = now - start;
+					starttime = runningTimespanInMilliseconds - (starttime);
+					starttime = starttime / (1000);
+				}
+
+				wm.starttime = starttime;
+				$scope.washingMachines.push(wm);
 			});
 			//$scope.washingMachines = washingMachines;
 			console.log("washingmachines:");
