@@ -15,7 +15,7 @@ Sense the status of your washing machine with a TI CC2650 Sensor Tag and the MEA
 - bower install in sense-washingmachine/public *todo* add .package file for bower?
 
 # High-Level Overview
-- The TI CC2650 Sensor Tag has an accelerometer sensor and is attached to the washing machine
+- The TI CC2650 Sensor Tag has an accelerometer sensor which is attached to the washing machine
 - Raspberry Pi 3.0
   - Node server
   - MongoDB
