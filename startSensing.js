@@ -55,7 +55,6 @@ SensorTag.discoverById("247189c13287", function(sensorTag) {
 		setTimeout(callback, 2000);
 	},
 	function(callback) {
-		if (USE_READ) {
 			console.log('readAccelerometer');
 			var x1 = 0.0;
 			var y1 = 0.0;
@@ -168,7 +167,7 @@ SensorTag.discoverById("247189c13287", function(sensorTag) {
 							return console.error(err);
 						} else {
 							console.log("accMeasurement created");
-							console.log("-----------------------")
+							console.log("-----------------------");
 							db.accMeasurementModel.find(function(err, accMeasurements) {
 								if (err)
 									return console.error(err);
