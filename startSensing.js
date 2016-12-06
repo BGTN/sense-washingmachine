@@ -150,7 +150,8 @@ SensorTag.discoverById("247189c13287", function(sensorTag) {
 						if(err) {
 							console.log(err);
 						} else {
-							console.log(washingMachines);
+							//console.log(washingMachines);
+							console.log("-----------------------");
 						}
 					});
 
@@ -167,11 +168,10 @@ SensorTag.discoverById("247189c13287", function(sensorTag) {
 							return console.error(err);
 						} else {
 							console.log("accMeasurement created");
-							console.log("-----------------------");
 							db.accMeasurementModel.find(function(err, accMeasurements) {
 								if (err)
 									return console.error(err);
-								console.log(accMeasurements);
+								//console.log(accMeasurements);
 							});
 						}
 					});
