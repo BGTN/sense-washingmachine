@@ -25,3 +25,12 @@ Sense the status of your washing machine with a TI CC2650 Sensor Tag and the MEA
   - If there are significant divergences in the acc measurements, the status of the washing machine is updated to running; if there are no significant divergences the status of the washing machine is updated to false
   - If the status of the washing machine turns from running to not running, a SMS is sent to the users phone
 - At the website the $scope is updated every x seconds and so the status of the washing machines are updated
+
+# Start
+1.	find out IP-address
+2.	in public/app/app.js change the options.api.base_url to the current ip address
+3.	start mongodb with “sudo mongod” in a terminal on the raspberry pi
+a.	If an error like “unclean shutdown detected occurs” execute cmd “sudo mongod --repair”
+4.	start to sense data from the sensor: “sudo node startSensing.js”
+5.	start the webserver: “sudo node server.js”
+6.	the website can be viewed in the browser at “http://<ip address>:4567
