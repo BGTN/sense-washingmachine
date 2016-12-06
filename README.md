@@ -33,4 +33,11 @@ Sense the status of your washing machine with a TI CC2650 Sensor Tag and the MEA
 ..* If an error like “unclean shutdown detected occurs” execute cmd “sudo mongod --repair”
 4.	start to sense data from the sensor: “sudo node startSensing.js”
 5.	start the webserver: “sudo node server.js”
-6.	the website can be viewed in the browser at “http://<<ip address>>:4567
+6.	the website can be viewed in the browser at “http://*ip address*:4567
+
+1. First ordered list item
+2. Another item
+⋅⋅* Unordered sub-list. 
+1. Actual numbers don't matter, just that it's a number
+⋅⋅1. Ordered sub-list
+4. And another item.
