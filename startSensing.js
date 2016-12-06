@@ -81,7 +81,7 @@ SensorTag.discoverById("247189c13287", function(sensorTag) {
 						countOff++;
 					}
 
-					if(countOff == 10) {
+					if(countOff == 5) {
 						
 						// change status of washingMachine to off (running: false); currently only one machine supported
 						db.washingMachineModel.find(function(err, washingMachines) {
@@ -102,7 +102,7 @@ SensorTag.discoverById("247189c13287", function(sensorTag) {
 												console.log("status of washingmachine turned off");
 												
 												// send sms that washing machine is done
-												/*
+												
 												child = exec('node ./alert.js',
 												  function (error, stdout, stderr) {
 												    console.log('stdout: ' + stdout);
@@ -110,7 +110,7 @@ SensorTag.discoverById("247189c13287", function(sensorTag) {
 												    if (error !== null) {
 												      console.log('exec error: ' + error);
 												    }
-												});*/}
+												});}
 											})
 									}
 								});
@@ -121,7 +121,7 @@ SensorTag.discoverById("247189c13287", function(sensorTag) {
 					}
 					
 					//if the washingMachine is on, change status of washingMachine is running
-					if (countOn > 3) {
+					if (countOn > 2) {
 						// change status of washingMachine to on (running: true); currently only one machine supported
 						db.washingMachineModel.find(function(err, washingMachines) {
 							if (err) {
@@ -157,8 +157,8 @@ SensorTag.discoverById("247189c13287", function(sensorTag) {
 					});
 
 					console.log(change);
-					console.log(countOn);
-					console.log(countOff);
+					console.log("Count On: " + countOn);
+					console.log("Count Off: " + countOff);
 					
 					x1 = x;
 					y1 = y;
