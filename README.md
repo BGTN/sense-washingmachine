@@ -27,9 +27,9 @@ Sense the status of your washing machine with a TI CC2650 Sensor Tag and the MEA
 - At the website the $scope is updated every x seconds and so the status of the washing machines are updated
 
 # Start
-1.	find out IP-address
+1.	find out IP-address of your Raspberry Pi
 2.	in public/app/app.js change the options.api.base_url to the current ip address
-3.	start mongodb with “sudo mongod” in a terminal on the raspberry pi
+3.	start mongodb with “sudo mongod” in a terminal on the Raspberry Pi
   -  If an error like “unclean shutdown detected occurs” execute cmd “sudo mongod --repair”
 4.	start to sense data from the sensor: “sudo node startSensing.js”
 5.	start the webserver: “sudo node server.js”
