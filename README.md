@@ -1,6 +1,9 @@
 # Sense your washingmachine!
 Sense the status of your washing machine with a TI CC2650 Sensor Tag and the MEAN Stack. Display the remaining time until your washing machine is done. If the washing-machine is done, a SMS will be sent to your phone.
 
+*Demonstration:*
+https://www.youtube.com/watch?v=Ok2VZPi2xEc&t=3s 
+
 # Resources
 - Raspberry Pi 3 Model B
 - Texas Instruments CC2650 Sensor Tag
@@ -13,6 +16,7 @@ Sense the status of your washing machine with a TI CC2650 Sensor Tag and the MEA
   - MongoDB
 - npm install in sense-washingmachine/
 - bower install in sense-washingmachine/public *todo* add .package file for bower?
+- Twilio account https://twilio.github.io/twilio-node/
 
 # High-Level Overview
 - The TI CC2650 Sensor Tag has an accelerometer sensor which is attached to the washing machine
@@ -25,6 +29,7 @@ Sense the status of your washing machine with a TI CC2650 Sensor Tag and the MEA
   - If there are significant divergences in the acc measurements, the status of the washing machine is updated to running; if there are no significant divergences the status of the washing machine is updated to false
   - If the status of the washing machine turns from running to not running, a SMS is sent to the users phone
 - At the website the $scope is updated every x seconds and so the status of the washing machines are updated
+- When the washing machine is done, an SMS is sent to your mobile device via Twilio
 
 # Start
 1.	find out IP-address of your Raspberry Pi
