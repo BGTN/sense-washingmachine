@@ -32,10 +32,14 @@ https://www.youtube.com/watch?v=Ok2VZPi2xEc&t=3s
 - When the washing machine is done, an SMS is sent to your mobile device via Twilio
 
 # Start
-1.	find out IP-address of your Raspberry Pi
-2.	in public/app/app.js change the options.api.base_url to the current ip address
-3.	start mongodb with “sudo mongod” in a terminal on the Raspberry Pi
+
+1.  Make a free Twilio account here https://www.twilio.com/try-twilio
+2.  Open the alert.js file and change the Account SID and Auth Token in the line var client = new twilio.RestClient(YOUR ACCOUNT SID HERE, YOUR AUTH TOKEN HERE);
+3.  In the client.sms.messages.create section, Change "to:" to "to: YOUR PHONE NUMBER HERE" and "from:" to "from: YOUR TWILIO PHONE NUMBER HERE
+4.	find out IP-address of your Raspberry Pi
+5.	in public/app/app.js change the options.api.base_url to the current ip address
+6.	start mongodb with “sudo mongod” in a terminal on the Raspberry Pi
   -  If an error like “unclean shutdown detected occurs” execute cmd “sudo mongod --repair”
-4.	start to sense data from the sensor: “sudo node startSensing.js”
-5.	start the webserver: “sudo node server.js”
-6.	the website can be viewed in the browser at “http://ip_address:4567
+7.	start to sense data from the sensor: “sudo node startSensing.js”
+8.	start the webserver: “sudo node server.js”
+9.	the website can be viewed in the browser at “http://ip_address:4567
