@@ -15,7 +15,7 @@ https://www.youtube.com/watch?v=Ok2VZPi2xEc&t=3s
   - Express
   - MongoDB
 - npm install in sense-washingmachine/
-- bower install in sense-washingmachine/public *todo* add .package file for bower?
+- bower install in sense-washingmachine/public // *todo* add .package file for bower
 - Twilio account https://twilio.github.io/twilio-node/
 
 # High-Level Overview
