@@ -1,6 +1,6 @@
 var options = {};
 options.api = {};
-options.api.base_url = "http://10.66.61.207:4567"; //change if other url
+options.api.base_url = "http://192.168.2.215:4567"; //change if other url
 
 var hostApp = angular.module('hostApp', ['ngRoute', 'timer']);
 
