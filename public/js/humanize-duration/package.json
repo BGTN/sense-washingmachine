@@ -1,0 +1,151 @@
+{
+  "name": "humanize-duration",
+  "author": {
+    "name": "Evan Hahn",
+    "email": "me@evanhahn.com",
+    "url": "https://evanhahn.com"
+  },
+  "contributors": [
+    {
+      "name": "Óli Tómas Freysson",
+      "url": "https://github.com/olitomas"
+    },
+    {
+      "name": "Martin Prins",
+      "url": "https://github.com/magarcia"
+    },
+    {
+      "name": "Filipi Siqueira",
+      "url": "https://github.com/filipi777"
+    },
+    {
+      "name": "Peter Rekdal Sunde",
+      "url": "https://github.com/peters"
+    },
+    {
+      "name": "Michał Janiec",
+      "url": "https://github.com/mjjaniec"
+    },
+    {
+      "name": "Eileen Li",
+      "url": "https://github.com/eileen3"
+    },
+    {
+      "name": "Tommy Brunn",
+      "url": "https://github.com/Nevon"
+    },
+    {
+      "name": "Giovanni Pellerano",
+      "url": "https://github.com/evilaliv3"
+    },
+    {
+      "name": "Rahma Sghaier",
+      "url": "https://twitter.com/sghaierrahma"
+    },
+    {
+      "name": "Evgenios Kastanias",
+      "url": "https://github.com/evgenios"
+    },
+    {
+      "name": "Oleksii Mylotskyi",
+      "url": "https://github.com/spalax"
+    },
+    {
+      "name": "Matthew Brandly",
+      "url": "https://github.com/brandly"
+    },
+    {
+      "name": "Patrik Simek",
+      "url": "https://github.com/patriksimek"
+    },
+    {
+      "name": "Toni Helminen",
+      "url": "https://github.com/tonihelminen"
+    },
+    {
+      "name": "Vidmantas Drasutis",
+      "url": "https://github.com/drasius2"
+    },
+    {
+      "name": "Manh Tuan",
+      "url": "https://github.com/J2TeaM"
+    },
+    {
+      "name": "Leonard Lee",
+      "url": "https://github.com/sheeeng"
+    },
+    {
+      "name": "Jesse Jackson",
+      "url": "https://github.com/jsejcksn"
+    }
+  ],
+  "version": "3.10.1",
+  "description": "Convert millisecond durations to English and many other languages.",
+  "homepage": "https://github.com/EvanHahn/HumanizeDuration.js",
+  "main": "humanize-duration.js",
+  "scripts": {
+    "pretest": "standard",
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "csv-parse": "^1.1.7",
+    "mocha": "^3.2.0",
+    "ms": "^0.7.2",
+    "standard": "^8.6.0"
+  },
+  "keywords": [
+    "humanize",
+    "duration",
+    "time",
+    "hours",
+    "minutes",
+    "seconds",
+    "days",
+    "years",
+    "months"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/EvanHahn/HumanizeDuration.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EvanHahn/HumanizeDuration.js/issues"
+  },
+  "license": "Unlicense",
+  "standard": {
+    "globals": [
+      "define",
+      "describe",
+      "it",
+      "before"
+    ]
+  },
+  "gitHead": "839fffdc3b959fe38b872d28efdb1f225a30b4b3",
+  "_id": "humanize-duration@3.10.1",
+  "_npmVersion": "5.3.0",
+  "_nodeVersion": "8.2.0",
+  "_npmUser": {
+    "name": "evanhahn",
+    "email": "me@evanhahn.com"
+  },
+  "dist": {
+    "integrity": "sha512-FHD+u5OKj8TSsSdMHJxSCC78N5Rt4ecil6sWvI+xPbUKhxvHmkKo/V8imbR1m2dXueZYLIl7PcSYX9i/oEiOIA==",
+    "shasum": "65b550c0aa095156ecb7c340db44ee0bdf71af4b",
+    "tarball": "https://registry.npmjs.org/humanize-duration/-/humanize-duration-3.10.1.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "evanhahn",
+      "email": "me@evanhahn.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/humanize-duration-3.10.1.tgz_1500671379287_0.7730873716063797"
+  },
+  "directories": {},
+  "_shasum": "65b550c0aa095156ecb7c340db44ee0bdf71af4b",
+  "_from": "humanize-duration@",
+  "_resolved": "https://registry.npmjs.org/humanize-duration/-/humanize-duration-3.10.1.tgz",
+  "readme": "ERROR: No README data found!"
+}
